@@ -11,10 +11,40 @@
 		itemName: 'Pizza',
 	}
   Output - [{ category: 'Food', totalSpent: 10 }] // Can have multiple categories, only one example is mentioned here
+  IMP : 
+  -> <ARR>.findIndex(); to get the index after satifying some condition 
 */
 
+function checkcat(ans,cat){
+  // FIND INDEX METHOD IMP 
+  return  ans.findIndex( (item) => item.category === cat);
+}
+function add(ans,idx,cat,price1){
+    if(idx==-1){ // not present in ans    
+        let obj1 = {
+            category : cat ,
+            totalSpent : price1 
+        }
+        ans.push(obj1);
+    }
+    else{
+        ans[idx].totalSpent += price1 ;  
+    }
+}
 function calculateTotalSpentByCategory(transactions) {
-  return [];
+    const ans  = [] ;
+    // TRAVERSE TRASACTION AND ADD THE CREATE CATEGORY SPECIFIED OBJECTS AND ALSO ADD TOTAL SPENT 
+    transactions.forEach( (item)=>
+    { 
+    let cat =  item.category ;
+    // CHECK FUNC RETURN THE IDX OF A CATEGORY IN THE ANS ARRAY  
+    let catIndex = checkcat(ans,cat);
+    // ADD FUNCTION UPDATES THE TOTAL MONEY SPENT IN ANS 
+    add(ans,catIndex,cat,item.price);
+    }
+    )
+    // console.log(ans);
+    return ans ; 
 }
 
 module.exports = calculateTotalSpentByCategory;
