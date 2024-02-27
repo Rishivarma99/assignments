@@ -5,7 +5,14 @@
 */
 
 function isAnagram(str1, str2) {
-
+  let n = str1.length();
+  
+  for(let i =0; i<n;i++){
+    if(str2.includes(str1.charAt(i))!= true){
+        return false ;
+    }
+  }
+  return true ; 
 }
 
 module.exports = isAnagram;

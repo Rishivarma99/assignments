@@ -31,6 +31,7 @@ function getSlice(str, start, end) {
   console.log("Original String:", str);
   console.log("After slice:", str.slice(start, end));
 }
+console.log("hi");
 getSlice("Hello World", 0, 5);
 
 // substring
@@ -74,3 +75,9 @@ function toLower(str) {
   console.log("After toLowerCase:", str.toLowerCase());
 }
 toLower("Hello World");
+
+
+let a1 = "rishi" ;
+
+// LENGTH OF STRING 
+console.log("length of a1 : " + a1.length);
