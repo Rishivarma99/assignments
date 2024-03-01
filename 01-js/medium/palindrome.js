@@ -4,7 +4,18 @@
 */
 
 function isPalindrome(str) {
-  return true;
+   let n = str.length;
+  let s =0 ;
+  let e = n-1;
+
+  while(s<e){
+    if(str[s]!=str[e]){
+      return false ;
+    }
+
+  }
+  return true ; 
+
 }
 
 module.exports = isPalindrome;

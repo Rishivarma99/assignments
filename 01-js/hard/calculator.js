@@ -16,6 +16,145 @@
   Once you've implemented the logic, test your code by running
 */
 
-class Calculator {}
+// class Calculator {
+
+
+//    constructor(){
+//       this.result = 0;
+//    }
+//    add(n){
+//     let temp = this.result ;
+//     temp = temp + n ;
+//       this.result = temp ;
+//    }
+//    subtract(n){
+//     this.result -= n ;
+//    }
+//    multiply(n){
+//     this.result *= n ;
+//    }
+//    divide(n){
+//     this.result = this.result /n ;
+//    }
+//    clear(){
+//     this.result = 0 ;
+//    }
+//    getResult(){
+//     return this.result;
+//    }
+
+
+// }
+
+
+
+
+// let obj1 = new Calculator();
+
+// obj1.add(10);
+// const ans = obj1.getResult();
+// console.log(ans);
+
+// // obj1.subtract(2);
+// // obj1.getResult();
+
+// // obj1.divide(2);
+// // obj1.getResult();
+
+// // obj1.multiply(2);
+// // obj1.getResult();
+
+// // obj1.clear();
+// // obj1.getResult();
+
+
+class Calculator {
+  constructor() {
+    this.result = 0;
+  }
+
+  add(n) {
+    this.result += n;
+  }
+
+  subtract(n) {
+    this.result -= n;
+  }
+
+  multiply(n) {
+    this.result *= n;
+  }
+
+  divide(n) {
+    if (n === 0) {
+      throw new Error("Division by zero is not allowed");
+    }
+    this.result /= n;
+  }
+
+  clear() {
+    this.result = 0;
+  }
+
+  getResult() {
+    return this.result;
+  }
+
+  // Function to handle spaces and parse expressions
+  parseExpression(expression) {
+    // Remove leading/trailing spaces
+    expression = expression.trim();
+
+    // Regular expression for numbers and operators
+    const operators = /[+\-*/()]/;
+    const tokens = expression.split(operators); // Split based on operators
+    const stack = []; // Stack for operands and operators
+
+    // Loop through tokens
+    for (const token of tokens) {
+      const trimmedToken = token.trim(); // Remove spaces around each token
+      if (!isNaN(trimmedToken)) { // If it's a number, push it to the stack
+        stack.push(parseFloat(trimmedToken));
+      } else if (operators.test(trimmedToken)) { // If it's an operator
+        const operand2 = stack.pop();
+        const operand1 = stack.pop();
+        let result;
+        switch (trimmedToken) {
+          case "+":
+            result = operand1 + operand2;
+            break;
+          case "-":
+            result = operand1 - operand2;
+            break;
+          case "*":
+            result = operand1 * operand2;
+            break;
+          case "/":
+            result = operand1 / operand2;
+            break;
+          default:
+            throw new Error("Invalid operator: " + trimmedToken);
+        }
+        stack.push(result); // Push the result back to the stack
+      } else { // Invalid character
+        throw new Error("Invalid character in expression: " + trimmedToken);
+      }
+    }
+
+    if (stack.length !== 1) {
+      throw new Error("Invalid expression format");
+    }
+
+    return stack.pop(); // Return the final result
+  }
+
+  calculate(expression) {
+    try {
+      this.result = this.parseExpression(expression);
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  }
+}
 
 module.exports = Calculator;
