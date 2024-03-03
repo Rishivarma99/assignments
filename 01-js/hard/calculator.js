@@ -101,7 +101,8 @@ class Calculator {
   }
 
   // Function to handle spaces and parse expressions
-  parseExpression(expression) {
+  parseExpression(expression) 
+  {
     // Remove leading/trailing spaces
     expression = expression.trim();
 
