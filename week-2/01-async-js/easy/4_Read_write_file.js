@@ -9,22 +9,24 @@ You can use the fs library to as a black box, the goal is to understand async ta
 // const fs = require("fs");
 
 // console.log("Program Start : ");
-
-// fs.readFile("a.txt","utf-8", function(err,data){
-//     if (err) {
-//         console.error("Error reading file:", err);
-//         return;
-//       }
-//     data = data + " curently in btech";
+     
+//     var data  = " curently in btch ";
 //     // IMPORTANT TO WRITE THE FILE 
-//      fs.writeFile("a.txt",data,"utf-8",function(err){
+//      fs.writeFile("a.txt",data,"utf-8",{flag : 'a'},function(err){
 //         if (err) {
 //             console.error("Error writing file:", err);
 //             return;
 //           }
-//         console.log(data);
+//           else{
+//             console.log("suc");
+//           }
+        
+//         // fs.readFile("a.txt","utf-8" , function(err,data){
+//         //     console.log(data);
+//         // })  
+
 //      })
-// })
+
 // console.log("File read Started");
 
 // console.log("Other works");
@@ -33,3 +35,19 @@ You can use the fs library to as a black box, the goal is to understand async ta
 // // ans = ans + i ;
 // // }
 // // console.log(ans);
+
+
+let fs = require("fs");
+
+let data = "This sentence will be written to the file";
+
+fs.writeFile("a.txt", data, (err) => {
+  if (err) console.log(err);
+  else {
+    console.log("Contents after writeFile:\n");
+    
+    fs.readFileSync("a.txt","utf-8",function(err,data){
+      console.log(data);
+    })
+  }
+});

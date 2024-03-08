@@ -1,4 +1,5 @@
 /**
+ * DONE  : 
  ## Reading the contents of a file
 
 Write code to read contents of a file and print it to the console. 
@@ -21,7 +22,7 @@ console.log("File read Started");
 
 console.log("Other works");
 let ans =0 ;
-for(let i =0 ;i<10000000000 ;i++){
+for(let i =0 ;i<10 ;i++){
 ans = ans + i ;
 }
 console.log(ans);
